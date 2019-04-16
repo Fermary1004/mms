@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.mms.dao.RdboardDao">
+	<select id="getBoards" resultType="kr.project.mms.vo.RdboardVo">
+		select * from recdboard left join member on recdboard_writer = member_id where recdboard_state = "true" order by recdboard_id desc
+	</select>
+	<select id="searchBaords" resultType="kr.project.mms.vo.RdboardVo">
+		select * from recdboard left join member on recdboard_writer = member_id where recdboard_state = "true" and ${key} like "%${word}%" order by recdboard_id desc
+	</select>
+	<select id="getDetail" resultType="kr.project.mms.vo.RdboardVo">
+		select * from recdboard left join member on recdboard_writer = member_id where recdboard_id = ${recdboard_id} and recdboard_state = "true"
+	</select>
+	<insert id="setBoard">
+		insert into recdboard (recdboard_title, recdboard_content, recdboard_writer, recdboard_file, recdboard_tags) values (#{board.recdboard_title}, #{board.recdboard_content}, #{board.recdboard_writer}, #{board.recdboard_file}, #{board.recdboard_tags})
+	</insert>
+	<update id="updateBoard">
+		update recdboard set recdboard_title = #{board.recdboard_title}, recdboard_content = #{board.recdboard_content}, recdboard_state = #{board.recdboard_state}, recdboard_file = #{board.recdboard_file}, recdboard_editdate = #{board.recdboard_editdate} where recdboard_id = #{board.recdboard_id}
+	</update>
+	<update id="updateRecdBoard">
+		update recdboard set recdboard_recd = ${newrecd} where recdboard_id = ${recdboard_id}
+	</update>
+	<insert id="recomendBoard">
+		insert into recommendation (recommended, recommender) values (${recdboard_id}, ${user_id})
+	</insert>
+	<select id="getRecommend" resultType="kr.project.mms.vo.RecommendationVo">
+		select * from recommendation where recommended = ${recdboard_id} 
+	</select>
+</mapper>

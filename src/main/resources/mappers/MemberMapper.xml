@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.mms.dao.MemberDao">
+  <select id="getMember" resultType="kr.project.mms.vo.MemberVo">
+    select * from member where member_email = #{member_email} and member_state = "true"
+  </select>
+  <insert id="joinMember">
+  	insert into member (member_email, member_pw, member_name, member_birth, member_nick, member_gender) values (#{join.member_email}, #{join.member_pw}, #{join.member_name}, #{join.member_birth}, #{join.member_nick}, #{join.member_gender})
+  </insert>
+  <update id="updateMember">
+  	update member set member_pw = #{update.member_pw}, member_name = #{update.member_name}, member_nick = #{update.member_nick}, member_birth = #{update.member_birth}, member_grade = #{update.member_grade}, member_gender = #{update.member_gender}, member_likes = #{update.member_likes}, member_msg = #{update.member_msg}, member_editeddate = #{update.member_editeddate}, member_state = #{update.member_state}, authority = #{update.authority} where member_id = #{update.member_id}
+  </update>
+  <update id="updateMemberImg">
+  	update member set member_image = #{image} where member_id = #{id}
+  </update>
+</mapper>

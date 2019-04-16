@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.lf {
+	height: 50px;
+	width: 100%;
+	line-height: 40px;	
+}
+.lfbx {
+	float: right;
+	position: relative;
+	margin-right: 20px;
+}
+.lfakr {
+	height: 30px;
+	display: inline-block;
+}
+.lfbdg {
+	line-height: 18px;
+	height: 25px;
+	width: 70px;
+	vertical-align: middle;
+}
+.lfside {
+	display: inline-block;
+	margin-right: 10px;
+	width: 50px;
+}
+.mdside {
+	display: inline-block;
+	margin-right: 30px;	
+	font-weight: bold;
+	vertical-align: middle;
+}
+.rgside {
+	display: inline-block;
+}

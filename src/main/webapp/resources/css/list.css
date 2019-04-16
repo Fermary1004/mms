@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+a,
+a:hover {
+	text-decoration: none;
+}
+.table {
+	width: 600px;
+}
+.freeboard_id {
+	width: 100px;
+}
+.freeboard_title {
+	width: 300px;
+}
+#bgblk {
+	background-color: #111;
+}
+#bgblk>h1 {
+	padding-left: 150px;
+	color: #FFF;
+}

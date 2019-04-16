@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.project.mms.dao.BoardDao">
+	<select id="getBoards" resultType="kr.project.mms.vo.BoardVo">
+		select * from freeboard left join member on freeboard_writer = member_id where freeboard_state = "true" order by freeboard_id desc
+	</select>
+	<select id="searchBaords" resultType="kr.project.mms.vo.BoardVo">
+		select * from freeboard left join member on freeboard_writer = member_id where freeboard_state = "true" and ${key} like "%${word}%" order by freeboard_id desc
+	</select>
+	<select id="getDetail" resultType="kr.project.mms.vo.BoardVo">
+		select * from freeboard left join member on freeboard_writer = member_id where freeboard_id = ${freeboard_id} and freeboard_state = "true"
+	</select>
+	<insert id="setBoard">
+		insert into freeboard (freeboard_title, freeboard_content, freeboard_writer, freeboard_file) values (#{board.freeboard_title}, #{board.freeboard_content}, #{board.freeboard_writer}, #{board.freeboard_file})
+	</insert>
+	<update id="updateBoard">
+		update freeboard set freeboard_title = #{board.freeboard_title}, freeboard_content = #{board.freeboard_content}, freeboard_state = #{board.freeboard_state}, freeboard_file = #{board.freeboard_file}, freeboard_editdate = #{board.freeboard_editdate} where freeboard_id = #{board.freeboard_id}
+	</update>
+</mapper>
