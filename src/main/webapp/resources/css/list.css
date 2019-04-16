@@ -14,9 +14,9 @@ a:hover {
 	width: 300px;
 }
 #bgblk {
-	background-color: #111;
+	background-color: #111111;
 }
 #bgblk>h1 {
 	padding-left: 150px;
-	color: #FFF;
+	color: #FFFFFF;
 }
