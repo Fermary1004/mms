@@ -33,4 +33,6 @@
 }
 .rgside {
 	display: inline-block;
+	font-weight: bold;
+	vertical-align: middle;
 }
